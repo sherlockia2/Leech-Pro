@@ -72,6 +72,10 @@
       "description": "Enter your custom leech command like /leech@botname and so on. Default is /leech",
       "required": false
     },
+    "LEECH_UNZIP_COMMAND": {
+      "description": "Enter your custom command to extract archives. Default is /leechunzip",
+      "required": false
+    },
     "SAVE_THUMBNAIL": {
       "description": "For custom thumbnail Command. default is /savethumbnail",
       "required": false
