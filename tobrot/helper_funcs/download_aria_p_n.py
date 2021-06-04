@@ -113,7 +113,7 @@ def add_magnet(aria_instance, magnetic_link, c_file_name):
     except Exception as e:
         return (
             False,
-            "**FAILED** \n" + str(e) + " \n<b> Your link is Dead 🐈</b>",
+            "**FAILED** \n" + str(e) + " \n<b> Your link is Dead.</b>",
         )
     else:
         return True, "" + download.gid + ""
@@ -125,7 +125,7 @@ def add_torrent(aria_instance, torrent_file_path):
             False,
             "**FAILED** \n"
             + str(e)
-            + " \nsomething wrongings when trying to add <u>TORRENT</u> file",
+            + " \nSomething went wrong when trying to add <u>TORRENT</u> file",
         )
     if os.path.exists(torrent_file_path):
         # Add Torrent Into Queue
@@ -138,7 +138,7 @@ def add_torrent(aria_instance, torrent_file_path):
                 False,
                 "**FAILED** \n"
                 + str(e)
-                + " \n<b> Your Link is Dead 🐈</b>",
+                + " \n<b> Your Link is Dead.</b>",
             )
         else:
             return True, "" + download.gid + ""
@@ -288,7 +288,7 @@ async def call_apropriate_function(
                         f"<b><a href='tg://user?id={user_id}'>📁 Your Requested Files</a></b>\n\n"
                     )
                     message_to_send = mention_req_user + message_to_send
-                    message_to_send = message_to_send + "\n\n" + "#uploaded\n\n<b>💫 Powered By : @TGFilmZone</b>"
+                    message_to_send = message_to_send + "\n\n" + "#uploaded\n\n"
                 else:
                     message_to_send = "<i>FAILED</i> to upload files. 😞😞"
                 await user_message.reply_text(
@@ -334,7 +334,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                 ikeyboard = []
                 ikeyboard.append(
                     InlineKeyboardButton(
-                        " 🗑️ Cancel Process", callback_data=(f"cancel {gid}").encode("UTF-8")
+                        " 🗑️ Cancel", callback_data=(f"cancel {gid}").encode("UTF-8")
                     )
                 )
                 inline_keyboard.append(ikeyboard)
@@ -369,11 +369,11 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             await check_progress_for_dl(aria2, gid, event, previous_message)
         else:
             LOGGER.info(
-                f"<b> Leechd Successfully</b>: `{file.name} ({file.total_length_string()})` 🤒"
+                f"<b> Downloaded Successfully</b>: `{file.name} ({file.total_length_string()})`"
             )
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
             await event.edit(
-                f"<b>Leech Successfully</b>:\n\n📙 <b>File Name</b>: \n`{file.name}`\n\n📀 <b>Total Size</b>: `〘{file.total_length_string()}〙`"
+                f"<b>Downloaded Successfully</b>:\n\<b>File Name</b>: \n`{file.name}`\n\ <b>Total Size</b>: `〘{file.total_length_string()}〙`"
             )
             return True
     except aria2p.client.ClientException:
@@ -391,7 +391,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
         file.remove(force=True, files=True)
         await event.edit(
             "*Download Auto Canceled :**\n\n"
-            "`Your Torrent/Link is Dead.`👺".format(file.name)
+            "`Your Torrent/Link is Dead.".format(file.name)
         )
         return False
     except Exception as e:
