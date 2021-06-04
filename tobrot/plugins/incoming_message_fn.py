@@ -68,10 +68,10 @@ async def incoming_message_f(client, message):
         LOGGER.info(dl_url)
         cf_name = None
     else:
-        await i_m_sefg.edit("<b>Hey Dude !</b>\n\n 🐈 <code>Reply with Direct /Torrent Link</code>")
+        await i_m_sefg.edit("<b>Invalid Format ❌</b>\n\n <b>Send A Torrent/Magnet/Direct Link & Reply With Command.</b>")
         return
     if dl_url is not None:
-        await i_m_sefg.edit_text("<b>Extracting Link..🤐</b>")
+        await i_m_sefg.edit_text("<b>Extracting Link...</b>")
         # start the aria2c daemon
         aria_i_p = await aria_start()
         # LOGGER.info(aria_i_p)
@@ -271,10 +271,10 @@ async def rename_tg_file(client, message):
                 message_to_send += "\n"
             if message_to_send != "":
                 mention_req_user = (
-                    f"<a href='tg://user?id={usr_id}'>🐈 Hey Bru!! Your Requested Files 👇</a>\n\n"
+                    f"<a href='tg://user?id={usr_id}'Your Requested Files 👇</a>\n\n"
                 )
                 message_to_send = mention_req_user + message_to_send
-                message_to_send = message_to_send + "\n\n" + "<b> #UPLOADS\n\n💫 Powered By : @TGFilmZone</b>"
+                message_to_send = message_to_send + "\n\n" + "<b> #UPLOADS\n\n</b>"
             else:
                 message_to_send = "<i>FAILED</i> to upload files. 😞😞"
             await message.reply_text(
